@@ -1,0 +1,25 @@
+create database order_app;
+use order_app;
+create table if not exists users(
+id int auto_increment primary key,
+name varchar(55),
+birth_place varchar(55),
+birth_date date,
+email varchar(55)
+);
+create table if not exists orders(
+id int auto_increment primary key,
+place_of_order varchar(55),
+price int,
+user_id int,
+foreign key (user_id) references users(id)
+);
+insert into users(name,birth_place,birth_date, email)values
+('Zámbó Imre', 'Budapest','1958-01-20','imre@king.com'),
+('Galambos Lajos', 'Budapest','1961-01-25','trombitas.lajos@darido.hu'),
+('Balázs Pali', 'Békéscsaba','1968-07-25','b.pali@refrakcio.hu');
+
+insert into orders(place_of_order,price,user_id) values
+('Zing Burger',4390,1),
+('McDonalds',12490,2),
+('Hajszalon Budaoest',13490,3);
